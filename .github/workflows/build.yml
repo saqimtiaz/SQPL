@@ -5,6 +5,7 @@ on:
     branches:
       - main
   workflow_dispatch:
+  schedule: "0 * * * *"
 
 jobs:
   deploy:
