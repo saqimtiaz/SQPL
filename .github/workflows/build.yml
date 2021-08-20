@@ -16,15 +16,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libstdc++6
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-            python-version: '2.7' # Version range or exact version of a Python version to use, using SemVer's version range syntax
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '16'
-
-      - name: Install Dependency
-        run: npm install --verbose
+      - uses: actions/setup-python@v2
+        with:
+            python-version: '2.7' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+      - run: npm install --verbose
       - name: Build
         run: |
             npm run build
