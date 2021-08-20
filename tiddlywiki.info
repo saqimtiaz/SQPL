@@ -1,5 +1,5 @@
 {
-	"description": "Nico's Plugin Library",
+	"description": "SQ Plugin Library",
 	"plugins": [
 		"tiddlywiki/pluginlibrary",
 		"tiddlywiki/tiddlyweb",
@@ -21,7 +21,7 @@
 			"--rendertiddler","$:/plugins/tiddlywiki/pluginlibrary/library.template.html","index.html","text/plain"],
 		"index": [
 			"--rendertiddler",
-			"npl-offline",
+			"sqpl-offline",
 			"index.html",
 			"text/plain"
 		]
