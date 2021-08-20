@@ -21,7 +21,7 @@ jobs:
           node-version: '16'
 
       - name: Install Dependency
-        run: npm install
+        run: npm install --verbose
       - name: Build
         run: |
             npm run build
