@@ -23,8 +23,7 @@ jobs:
         with:
             python-version: '2.7' # Version range or exact version of a Python version to use, using SemVer's version range syntax
       - run: |
-            npm config set python /opt/hostedtoolcache/Python/2.7.18/x64
-            npm install --verbose
+            npm install --verbose --python=python2.7
       - name: Build
         run: |
             npm run build
