@@ -1,5 +1,5 @@
 {
-	"name": "streams",
+	"name": "Streams",
 	"repository": "https://github.com/saqimtiaz/streams.git",
-	"pluginPath": "plugins/streams"
+	"pluginPaths": ["plugins/streams"]
 }

@@ -1,0 +1,5 @@
+{
+	"name": "Relink",
+	"repository": "https://github.com/flibbles/tw5-relink.git",
+	"pluginPaths": ["plugins/relink","plugins/relink-titles"]
+}
