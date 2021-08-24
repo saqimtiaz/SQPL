@@ -1,9 +1,9 @@
 tags: $:/tags/PluginLibrary
 title: SQPL
-caption: SQPL
+caption: SQ Plugin Library
 type: text/vnd.tiddlywiki
 url: https://saqimtiaz.github.io/SQPL/library/index.html
 
-!!SQ Plugin library.
+!!Saq's Plugin library.
 
 {{Installation}}
