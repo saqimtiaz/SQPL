@@ -1,5 +1,5 @@
 {
 	"name": "FileUploads",
 	"repository": "https://github.com/saqimtiaz/tw5-file-uploads.git",
-	"pluginPaths": ["plugins/file-uploads","plugins/fission-uploader","github-uploader"]
+	"pluginPaths": ["plugins/file-uploads","plugins/fission-uploader","plugins/github-uploader"]
 }
