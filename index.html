@@ -165,19 +165,15 @@ Error message and password prompt
 
 <li>All plugins</li>
 
+<li>file-uploads plugin</li>
+
+<li>fission-uploader plugin</li>
+
 <li>Installation</li>
-
-<li>relink plugin</li>
-
-<li>relink-titles plugin</li>
 
 <li>SQPL</li>
 
 <li>sqpl-offline</li>
-
-<li>Streams Fusion plugin</li>
-
-<li>streams plugin</li>
 
 </ul>
 </p>
@@ -10423,6 +10419,29 @@ Error message and password prompt
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
 </div>
+<div tags="sqpl-plugin" title="file-uploads plugin" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>title: $:/plugins/commons/file-uploads/readme
+
+Experimental plugin in active development for uploading binary tiddlers to different storage backends and creating canonical_uri tiddlers in their stead.
+
+It is recommended to ''disable ~AutoSave when using this plugin'', to avoid saving imported binary tiddlers twice and using up twice the bandwidth.
+
+Storage backends are pluggable and can be added via uploader modules. This plugin includes a &quot;dummy&quot; uploader module that implements the minimal interface needed for an uploader module but does not actually upload anything and just logs to the developer console.
+
+After installing this plugin and at least one uploader sub-plugin, you must configure the uploader to use in the [[settings|$:/plugins/commons/file-uploads/settings]] of this plugin.
+
+This plugin uses a [[filter|$:/config/fileUploadFilter]] to determine which tiddlers are uploaded. The default filter uploads all binary tiddlers over 100kb in size.
+
+</pre>
+</div>
+<div tags="sqpl-plugin" title="fission-uploader plugin" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>title: $:/plugins/commons/file-uploads-fission/readme
+
+Fission uploader module for the File Uploads plugin. Saves uploads to Fission's Webnative file system which is based on IPFS.
+
+Meant for use on [[TiddlyWiki on Fission|https://tiddlywiki.fission.app/]]
+</pre>
+</div>
 <div title="Installation" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>!! Installation instructions
 
@@ -10432,36 +10451,6 @@ Error message and password prompt
 
 * Go to the Control Panel of your wiki, in the Plugins tab
 * Open the SQPL library
-</pre>
-</div>
-<div tags="sqpl-plugin" title="relink plugin" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>title: $:/plugins/flibbles/relink/readme
-type: text/vnd.tiddlywiki
-
-When renaming a tiddler, Relink can update the fields, filters, and widgets
-of all other tiddlers. However, it works through whitelisting.
-
-It's already configured to update tiddler titles for all core widgets, filters,
-and fields, but the whitelists can be customized for each of this in the
-configuration panel.
-
-See &lt;a href={{$:/plugins/flibbles/relink!!source}}&gt;the tw5-relink website&lt;/a&gt; for more details and examples.
-
-</pre>
-</div>
-<div tags="sqpl-plugin" title="relink-titles plugin" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>title: $:/plugins/flibbles/relink-titles/readme
-
-Highly customizable relinking of tiddler titles //related// to the renamed tiddler.
-
-* Rename a hierarchy of subtiddlers when renaming a root tiddler.
-* Make custom filter rules to rename other tiddlers the way you want when Relinking.
-* Integrates with other plugins for plugin-specific rules.
-
-See &lt;a href={{$:/plugins/flibbles/relink-titles!!source}}&gt;the tw5-relink website&lt;/a&gt; for more details and examples.
-
-{{$:/core/images/warning}} ''Warning:'' You must use //Relink// v1.10.2 or greater with this, or this plugin may delete some tiddler bodies while trying to relink titles.
-
 </pre>
 </div>
 <div caption="SQ Plugin Library" tags="$:/tags/PluginLibrary" title="SQPL" type="text/vnd.tiddlywiki" url="https://saqimtiaz.github.io/SQPL/library/index.html" revision="0" bag="default">
@@ -10476,80 +10465,6 @@ See &lt;a href={{$:/plugins/flibbles/relink-titles!!source}}&gt;the tw5-relink w
 [is[tiddler]] -[[$:/boot/boot.css]] -[[$:/HistoryList]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] -[[$:/plugins/tiddlywiki/filesystem]] -[[$:/plugins/tiddlywiki/tiddlyweb]] -[prefix[$:/temp/]] -[[$:/UpgradeLibrary]] -[[$:/UpgradeLibrary/List]] +[sort[title]] $(publishFilter)$
 \end
 {{$:/core/templates/tiddlywiki5.html}}
-</pre>
-</div>
-<div tags="sqpl-plugin" title="Streams Fusion plugin" type="text/vnd.tiddlywiki" revision="0" bag="default">
-<pre>|!Version |{{$:/plugins/phiv/streams-fusion!!version}} |
-|!Build date |&lt;$view tiddler=&quot;$:/plugins/phiv/streams-fusion&quot; field=&quot;modified&quot; format=&quot;date&quot; template=&quot;MMM DDth, YYYY&quot; /&gt; |
-|!TW5 compatibility |{{$:/plugins/phiv/streams-fusion!!core-version}} |
-
-!! What is this?
-
-[[Streams-fusion|https://fastfreddy.gitlab.io/streams-fusion/]] is an addon to the [[Streams|https://saqimtiaz.github.io/streams/]] plugin that lets the user fuse (merge) a hierarchy of nodes from a stream, into a single tiddler's wikitext.
-
-!! Why would I want to do this?
-
-Great question; you probably will not. Streams users like to edit their thoughts rapidly, jolt down ideas, leverage keyboard shortcuts extensively, and re-organize them using drag and drop features. Once that process has taken place, some users want to collapse the streams tiddlers down to a single &quot;regular&quot; tiddler which may be easier to export, share with non-stream users, convert to another format, etc... Some users don't like the multiple tiddlers in their search results (although there are better ways to address this). It is worth pointing out the similarities with the experimental [[Streams-based list editor|https://saqimtiaz.github.io/sq-tw/single-tiddler-streams.html#test]] by Saq.
-
-!! Features
-
-* preserve the streams node hierarchy (maintains the tree structure)
-* supports list unordered lists (bullets), numbered lists (pound signs) and raw HTML output
-* supports sub-tree (branches) exports (using the node context menu or the keyboard shortcuts)
-* exports the root node's text if it exists
-* wraps complex nodes inside `&lt;div&gt;` tags, supporting hyper complex streams such as [[Stream's FAQ|https://saqimtiaz.github.io/streams/#FAQs]] and [[Stream's working with streams tiddlers|https://saqimtiaz.github.io/streams/#Working%20with%20streams%20tiddlers]] well (see Technical details below)
-
-!! Installation
-
-!!! Dependencies: 
-
-First install the two plugins (visit the page and follow the installation instructions):
-
-* the [[Streams plugin|https://saqimtiaz.github.io/streams/]] (''v1.2.22'' or greater)
-* the [[relink plugin|https://flibbles.github.io/tw5-relink/]]
-
-!!! Installation steps:
-
-* Then install the [[streams-fusion|$:/plugins/phiv/streams-fusion]] plugin (drag and drop the link into your ~TiddlyWiki notebook)
-
-!! Usage
-
-* to fuse a complete stream, use the the button at the bottom of the tiddler, next to the `add node` button.
-** [img[$:/plugins/phiv/streams-fusion/button.png]]
-* to fuse a portion of a stream, use the context menu of the top-most node or the keyboard shortcuts when editing a node
-** [img[$:/plugins/phiv/streams-fusion/context-menu.png]]
-* you can try on the [[demo]] tiddler. Alternatively, you can drag the plugin onto https://saqimtiaz.github.io/streams/ and try it there (it does not require reload)
-
-
-!! Technical details
-
-* The general case for Streams fusion is non-trivial; Streams nodes ''are'' full tiddlers and thus can include rich content (lists, tables, multi-line, headings, etc.). wikitext list items ''are not'', fundamentally. As a result, some node tiddler content cannot be retained, unchanged, during the conversion if one aims to preserve the hierarchy intact.
-* This plugin favours visual and hierarchical accuracy of the combined tiddler, once rendered, over the accuracy of the wikitext from exported node tiddlers. This means that HTML artefacts are introduced when the node content would break down the lists or numbered lists, for example when nodes contain multi line text. In edit mode, these complex nodes will show `&lt;div&gt;` tags.  Jan's [[Streams-to-text addon|https://szen.io/stream/]] does a better job at preserving original wikitext, at the expense of the tree structure and the rendering of complex node tiddlers. It can be considered to &quot;flatten&quot; the tree.
-* Nodes that include locally-relevant macro code, or transclusions of local fields/tags will not fuse well, generally. The context of the tiddler changes after fusion, and wikitext code that relies on the context will likely not behave as expected. For example, the title of a node tiddler will change, once merged into a single tiddler (either into new name, or the name of the root tiddler).
-* The approach of using the [[space-space-newline plugin|https://wikilabs.github.io/editions/space-space-newline/]] and replacing newlines within node tiddlers with space-space-newlines within list items, instead of wrapping in `&lt;div&gt;` tags was explored, but results were unsatisfactory: for example, block rules such as headings work well in a node tiddler but were not processed when in a list item.
-
-
-!! Roadmap
-
-*  maybe offer the option to export wikitext-&gt;HTML-&gt;markdown using the [[turndown library|https://github.com/mixmark-io/turndown]]
-
-!! Credits
-
-* Jeremy and the developer community for [[TiddlyWiki|https://tiddlywiki.com]]; for the enduring resolve to maintain this superb note-taking tool
-* Saq Imtiaz for the revolutionary [[Streams|https://saqimtiaz.github.io/streams/]] plugin, taking [[TiddlyWiki|https://tiddlywiki.com]] to new heights, and his overall community involvement
-* Jan's [[Streams-to-text addon|https://szen.io/stream/]] for the css styles and the inspiration how to approach the merging of Streams tiddlers. 
-* https://www.freepik.com/ for the streams-fusion icon. Jan's icon is still nicer, but he claimed it first.
-* The [[relink plugin|https://flibbles.github.io/tw5-relink/]] for a set of features we now can't live without
-* The [[Tinka plugin packager|https://tinkaplugin.github.io]]; Streams-fusion was packaged without a node.js TiddlyWiki server
-</pre>
-</div>
-<div tags="sqpl-plugin" title="streams plugin" type="text/x-markdown" revision="0" bag="default">
-<pre># Streams
-
-TiddlyWiki plugin for rapid data entry with a keyboard driven workflow. Divide content into smaller tiddlers as you write.
-
-https://saqimtiaz.github.io/streams/
-
 </pre>
 </div>
 
