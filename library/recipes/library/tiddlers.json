@@ -7,7 +7,7 @@
         "core-version": ">=5.1.23",
         "plugin-priority": 0,
         "list": "readme settings",
-        "parent-plugin": "$:/plugins/tiddlywiki/file-uploads",
+        "parent-plugin": "$:/plugins/commons/file-uploads",
         "version": "0.1.0",
         "plugin-type": "plugin",
         "dependents": "",
