@@ -10,6 +10,22 @@
 <script>
 var assetList = [
     {
+        "title": "$:/plugins/sq/file-uploads-PUT",
+        "description": "EXPERIMENTAL PUT uploader for uploading binary files to external storage",
+        "name": "File Uploads: PUT",
+        "author": "Saq Imtiaz",
+        "core-version": ">=5.1.23",
+        "plugin-priority": 0,
+        "list": "readme settings",
+        "parent-plugin": "$:/plugins/tiddlywiki/file-uploads",
+        "version": "0.1.0",
+        "plugin-type": "plugin",
+        "dependents": "",
+        "type": "application/json",
+        "readme": "@@color:red;''Highly experimental - no support available. Use at your own risk.''@@ \n\nPUT uploader module for the File Uploads plugin. Saves to ~WebDav or other servers accepting PUT requests.\n\nCurrently the uploader derives the base URL for the ~WebDav server from the URL of the document. This fits the use case of using a ~WebDav (or other PUT enabled server) used to host a ~TiddlyWiki that can be saved.\n\nFor a lightweight and easy solution for hosting a local ~TiddlyWiki using ~WebDav see this [[discussion|https://talk.tiddlywiki.org/t/use-webdav-for-saving-a-single-file-wiki/441]].",
+        "requires-reload": "yes"
+    },
+    {
         "type": "application/json",
         "author": "Fred D",
         "core-version": ">=5.1.23",
