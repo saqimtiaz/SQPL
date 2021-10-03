@@ -10444,6 +10444,12 @@ After installing this plugin and at least one uploader sub-plugin, you must conf
 
 This plugin uses a [[filter|$:/config/fileUploadFilter]] to determine which tiddlers are uploaded. The default filter uploads all binary tiddlers over 100kb in size.
 
+Alternatively, you can disable the automatic file uploads and use the widget message `tm-upload-tiddlers` to manually upload specific tiddlers as files. The message accepts a `param` that is a filter which specifies the tiddlers to upload.
+
+Examples:
+
+* `&lt;$action-sendmessage $message=&quot;tm-upload-tiddlers&quot; $param=&quot;MyTiddler&quot;/&gt;`
+* `&lt;$action-sendmessage $message=&quot;tm-upload-tiddlers&quot; $param=&quot;[type[image/png]]&quot;/&gt;`
 </pre>
 </div>
 <div tags="sqpl-plugin" title="fission-uploader plugin" type="text/vnd.tiddlywiki" revision="0" bag="default">
