@@ -8,7 +8,7 @@
         "plugin-priority": 0,
         "list": "readme settings",
         "parent-plugin": "$:/plugins/commons/file-uploads",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "plugin-type": "plugin",
         "dependents": "",
         "type": "application/json",
@@ -78,6 +78,22 @@
         "dependents": "",
         "type": "application/json",
         "readme": "''Experimental'' proof of concept Github uploader module for the File Uploads plugin. Saves uploads to Github for use with Github pages. Based on the Octokat library. Requires that credentials have been filled in for the [[Github saver|$:/core/ui/ControlPanel/Saving/GitHub]].\n\nIntended for use with wikis hosted on Github Pages. \n\nPlease see:\n\n* The [[terms of service and guidelines|https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages]] for using Github Pages. \n* How to for [[hosting a TiddlyWiki on Github Pages|https://kookma.github.io/TW5-GitHub-Saver/]].",
+        "requires-reload": "yes"
+    },
+    {
+        "title": "$:/plugins/sq/node-files-PUT-support",
+        "description": "EXPERIMENTAL node.js support for PUT uploader",
+        "name": "Node.js files PUT uploader support",
+        "author": "Saq Imtiaz",
+        "core-version": ">=5.1.23",
+        "plugin-priority": 0,
+        "list": "readme",
+        "dependents": "$:/plugins/sq/file-uploads-PUT $:/plugins/commons/file-uploads",
+        "parent-plugin": "$:/plugins/commons/file-uploads",
+        "version": "0.1.1",
+        "plugin-type": "plugin",
+        "type": "application/json",
+        "readme": "@@color:red;''Highly experimental - no support available. Use at your own risk.''@@ \n\n* PUT support for the files directory on node.js. Allows the PUT uploader to be used with ~TiddlyWiki on node.js\n** Enables PUT requests to save files to the `files` directory that is server by the TW node.js server\n* The directory for uploaded files must be set to `files` (the default).",
         "requires-reload": "yes"
     },
     {
