@@ -1,5 +1,5 @@
 {
 	"name": "FileUploads-PUT",
 	"repository": "https://github.com/saqimtiaz/tw5-file-uploads-PUT.git",
-	"pluginPaths": ["PUT-uploader"]
+	"pluginPaths": ["PUT-uploader","node-files-PUT-support"]
 }
