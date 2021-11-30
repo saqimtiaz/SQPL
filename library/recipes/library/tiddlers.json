@@ -16,13 +16,13 @@
         "requires-reload": "yes"
     },
     {
-        "version": "0.0.9-beta",
+        "version": "0.0.10-beta",
         "type": "application/json",
         "title": "$:/plugins/phiv/streams-fusion",
         "source": "https://fastfreddy.gitlab.io/streams-fusion/",
         "plugin-type": "plugin",
         "name": "Streams Fusion",
-        "modified": "20211130013438172",
+        "modified": "20211130125754133",
         "list": "readme changelog license",
         "description": "Streams-fusion - a streams addon to merge streams tiddlers ",
         "dependents": "$:/plugins/sq/streams $:/plugins/flibbles/relink",
