@@ -10563,9 +10563,9 @@ See &lt;a href={{$:/plugins/flibbles/relink-titles!!source}}&gt;the tw5-relink w
 
 !! Why would I want to do this?
 
-Great question; you probably will not. Streams users like to edit their thoughts rapidly, jolt down ideas, leverage keyboard shortcuts extensively, and re-organize them using drag and drop features.
+Great question! You probably will not. Streams users like to edit their thoughts rapidly, jolt down ideas, leverage keyboard shortcuts extensively, and re-organize them using drag and drop features.
 
-Once that process has taken place however, some users may wish to collapse the streams tiddlers down to a single &quot;regular&quot; tiddler which may be easier to export, share with non-stream users, convert to another format, etc... It is worth pointing out the similarities with the experimental [[Streams-based list editor|https://saqimtiaz.github.io/sq-tw/single-tiddler-streams.html#test]] by Saq.
+Once that process has taken place however, some users may wish to collapse the streams tiddlers down to a single &quot;regular&quot; tiddler, which may be easier to export, share with non-stream users, convert to another format, etc... It is worth pointing out the similarities with the experimental [[Streams-based list editor|https://saqimtiaz.github.io/sq-tw/single-tiddler-streams.html#test]] by Saq Imtiaz.
 
 !! Features
 
@@ -10573,29 +10573,30 @@ Once that process has taken place however, some users may wish to collapse the s
 * supports the following list formats:
 ** unordered lists (bullets)
 ** numbered lists (pound signs)
-** regular paragraphs (please note that choosing paragraphs flattens the hierarchy, it does not however insert `&lt;div&gt;` tags for complex content)
+** regular paragraphs -&gt; please note that choosing &quot;paragraphs&quot; flattens the hierarchy
 * supports the following output formats:
 ** wikitext
 ** raw HTML output (this is an export format, all wikitext - e.g. macros, widgets - is rendered first)
 ** markdown (this is an export format, all wikitext - e.g. macros, widgets - is rendered first)
 * supports sub-tree (branches) exports (using the node context menu or the keyboard shortcuts)
 * exports the root node's text if it exists
-* wraps complex nodes inside `&lt;div&gt;` tags, supporting hyper complex streams such as [[Stream's FAQ|https://saqimtiaz.github.io/streams/#FAQs]] and [[Stream's working with streams tiddlers|https://saqimtiaz.github.io/streams/#Working%20with%20streams%20tiddlers]] well (see Technical details below)
+* wraps complex nodes inside `&lt;div&gt;` tags, supporting complex streams such as [[Stream's FAQ|https://saqimtiaz.github.io/streams/#FAQs]] and [[Stream's working with streams tiddlers|https://saqimtiaz.github.io/streams/#Working%20with%20streams%20tiddlers]] well (see Technical details below)
+** -&gt; please note that choosing the &quot;paragraphs&quot; list format does not need to wrap complex nodes inside `&lt;div&gt;` tags
 
 !! Installation
 
-!!! Dependencies: 
+!!! Dependencies:
 
-First install the two plugins (visit the page and follow the installation instructions):
+First install the two prerequisite plugins (visit the page and follow the installation instructions):
 
 * the [[Streams plugin|https://saqimtiaz.github.io/streams/]] (''v1.2.22'' or greater)
-** ''the recommended way to install Streams is to add the [[SQ plugin library|https://saqimtiaz.github.io/SQPL/]] and then add the plugin through the [[Control Panel|$:/core/ui/ControlPanel/Plugins]]''
-* the [[relink plugin|https://flibbles.github.io/tw5-relink/]]
-* the [[official Markdown plugin for TiddlyWiki|https://tiddlywiki.com/plugins/tiddlywiki/markdown/#%24%3A%2Fplugins%2Ftiddlywiki%2Fmarkdown]] can be installed, optionally. This will be useful to render the Streams fused into Markdown correctly, if desired
+** ''the recommended way to install Streams is to add the [[SQ plugin library|https://saqimtiaz.github.io/SQPL/]], and then add the plugin through the [[Control Panel|$:/core/ui/ControlPanel/Plugins]]''.
+* the [[relink plugin|https://flibbles.github.io/tw5-relink/]].
+* (optional) the [[official Markdown plugin for TiddlyWiki|https://tiddlywiki.com/plugins/tiddlywiki/markdown/#%24%3A%2Fplugins%2Ftiddlywiki%2Fmarkdown]] can be installed. This will be useful to render new markdown tiddlers correctly, when choosing the &quot;markdown&quot; output format.
 
 !!! Installation steps:
 
-* Then install the [[streams-fusion|$:/plugins/phiv/streams-fusion]] plugin
+* install the [[streams-fusion|$:/plugins/phiv/streams-fusion]] plugin
 ** ''the recommended way to install streams-fusion is to add through the [[SQ plugin library|https://saqimtiaz.github.io/SQPL/]], using the [[Control Panel|$:/core/ui/ControlPanel/Plugins]]''
 * starting with version 0.0.9, the plugin includes a javascript-based markdown conversion component. As a result, the ~TiddlyWiki notebook must be saved and reloaded
 
@@ -10605,7 +10606,7 @@ First install the two plugins (visit the page and follow the installation instru
 ** [img[$:/plugins/phiv/streams-fusion/button.png]]
 * to fuse a portion of a stream, use the context menu of the top-most node or the keyboard shortcuts when editing a node
 ** [img[$:/plugins/phiv/streams-fusion/context-menu.png]]
-* you can try on the [[demo]] tiddler
+* Streams Fusion configuration settings can be viewed or changed at the bottom of the `Streams settings` configuration page, accessible through the Control Panel
 
 
 !! Technical details
@@ -10618,19 +10619,18 @@ First install the two plugins (visit the page and follow the installation instru
 
 !! Roadmap
 
+* extract the markdown conversion into a standalone plugin that can be used without Streams
 * investigate markdown conversion anomalies (e.g. `&lt;code&gt;`)
-* look into exposing some of the options of the Turndown library as user settings in the Streams
-* consider extracting the markdown conversion into a standalone plugin that can be used without Streams
 
 !! Credits
 
-* Jeremy and the developer community for [[TiddlyWiki|https://tiddlywiki.com]]; for the enduring resolve to maintain this superb note-taking tool
-* Saq Imtiaz for the revolutionary [[Streams|https://saqimtiaz.github.io/streams/]] plugin, taking [[TiddlyWiki|https://tiddlywiki.com]] to new heights, and his overall community involvement
+* Jeremy and the developer community for [[TiddlyWiki|https://tiddlywiki.com]]; for the enduring resolve to maintain this superb note-taking tool.
+* Saq Imtiaz for the revolutionary [[Streams|https://saqimtiaz.github.io/streams/]] plugin, taking [[TiddlyWiki|https://tiddlywiki.com]] to new heights, and his overall community involvement.
 * Jan's [[Streams-to-text addon|https://szen.io/stream/]] for the css styles and the inspiration how to approach the merging of Streams tiddlers. 
 * https://www.freepik.com/ for the streams-fusion icon. Jan's icon is still nicer, but he claimed it first.
-* The [[relink plugin|https://flibbles.github.io/tw5-relink/]] for a set of features we now can't live without
-* The [[Tinka plugin packager|https://tinkaplugin.github.io]]; Streams-fusion was packaged without a node.js ~TiddlyWiki server
-* The [[Turndown library|https://github.com/mixmark-io/turndown]] for markdown conversion, and the [[Typewriter plugin|https://saqimtiaz.github.io/sq-tw/typewriter.html]] to understand how to integrate it into ~TiddlyWiki
+* The [[relink plugin|https://flibbles.github.io/tw5-relink/]] for a set of features we now can't live without.
+* The [[Tinka plugin packager|https://tinkaplugin.github.io]]; Streams-fusion was packaged without a node.js ~TiddlyWiki server.
+* The [[Turndown library|https://github.com/mixmark-io/turndown]] for markdown conversion, and the [[Typewriter plugin|https://saqimtiaz.github.io/sq-tw/typewriter.html]] to understand how to integrate it into ~TiddlyWiki.
 </pre>
 </div>
 <div tags="sqpl-plugin" title="streams plugin" type="text/x-markdown" revision="0" bag="default">
