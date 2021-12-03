@@ -185,6 +185,8 @@ Error message and password prompt
 
 <li>sqpl-offline</li>
 
+<li>Streams Fusion plugin</li>
+
 <li>streams plugin</li>
 
 </ul>
@@ -10548,6 +10550,87 @@ See &lt;a href={{$:/plugins/flibbles/relink-titles!!source}}&gt;the tw5-relink w
 [is[tiddler]] -[[$:/boot/boot.css]] -[[$:/HistoryList]] -[type[application/javascript]library[yes]] -[[$:/boot/boot.js]] -[[$:/boot/bootprefix.js]] -[[$:/plugins/tiddlywiki/filesystem]] -[[$:/plugins/tiddlywiki/tiddlyweb]] -[prefix[$:/temp/]] -[[$:/UpgradeLibrary]] -[[$:/UpgradeLibrary/List]] +[sort[title]] $(publishFilter)$
 \end
 {{$:/core/templates/tiddlywiki5.html}}
+</pre>
+</div>
+<div tags="sqpl-plugin" title="Streams Fusion plugin" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>|!Version |{{$:/plugins/phiv/streams-fusion!!version}} |
+|!Build date |&lt;$view tiddler=&quot;$:/plugins/phiv/streams-fusion&quot; field=&quot;modified&quot; format=&quot;date&quot; template=&quot;MMM DDth, YYYY&quot; /&gt; |
+|!TW5 compatibility |{{$:/plugins/phiv/streams-fusion!!core-version}} |
+
+!! What is this?
+
+[[Streams-fusion|https://fastfreddy.gitlab.io/streams-fusion/]] is an addon to the [[Streams|https://saqimtiaz.github.io/streams/]] plugin that lets the user fuse (merge) and export a hierarchy of nodes from a stream, into a single tiddler's wikitext, raw html or markdown.
+
+!! Why would I want to do this?
+
+Great question! You probably will not. Streams users like to edit their thoughts rapidly, jolt down ideas, leverage keyboard shortcuts extensively, and re-organize them using drag and drop features.
+
+Once that process has taken place however, some users may wish to collapse the streams tiddlers down to a single &quot;regular&quot; tiddler, which may be easier to export, share with non-stream users, convert to another format, etc... It is worth pointing out the similarities with the experimental [[Streams-based list editor|https://saqimtiaz.github.io/sq-tw/single-tiddler-streams.html#test]] by Saq Imtiaz.
+
+!! Features
+
+* preserve the streams node hierarchy (maintains the tree structure)
+* supports the following list formats:
+** unordered lists (bullets)
+** numbered lists (pound signs)
+** regular paragraphs -&gt; please note that choosing &quot;paragraphs&quot; flattens the hierarchy
+* supports the following output formats:
+** wikitext
+** raw HTML output (this is an export format, all wikitext - e.g. macros, widgets - is rendered first)
+** markdown (this is an export format, all wikitext - e.g. macros, widgets - is rendered first)
+* supports sub-tree (branches) exports (using the node context menu or the keyboard shortcuts)
+* exports the root node's text if it exists
+* wraps complex nodes inside `&lt;div&gt;` tags, supporting complex streams such as [[Stream's FAQ|https://saqimtiaz.github.io/streams/#FAQs]] and [[Stream's working with streams tiddlers|https://saqimtiaz.github.io/streams/#Working%20with%20streams%20tiddlers]] well (see Technical details below)
+** -&gt; please note that choosing the &quot;paragraphs&quot; list format does not need to wrap complex nodes inside `&lt;div&gt;` tags
+
+!! Installation
+
+!!! Dependencies:
+
+First install the two prerequisite plugins (visit the page and follow the installation instructions):
+
+* the [[Streams plugin|https://saqimtiaz.github.io/streams/]] (''v1.2.22'' or greater)
+** ''the recommended way to install Streams is to add the [[SQ plugin library|https://saqimtiaz.github.io/SQPL/]], and then add the plugin through the [[Control Panel|$:/core/ui/ControlPanel/Plugins]]''.
+* the [[relink plugin|https://flibbles.github.io/tw5-relink/]].
+* (optional) the [[official Markdown plugin for TiddlyWiki|https://tiddlywiki.com/plugins/tiddlywiki/markdown/#%24%3A%2Fplugins%2Ftiddlywiki%2Fmarkdown]] can be installed. This will be useful to render new markdown tiddlers correctly, when choosing the &quot;markdown&quot; output format.
+
+!!! Installation steps:
+
+* install the [[streams-fusion|$:/plugins/phiv/streams-fusion]] plugin
+** ''the recommended way to install streams-fusion is to add through the [[SQ plugin library|https://saqimtiaz.github.io/SQPL/]], using the [[Control Panel|$:/core/ui/ControlPanel/Plugins]]''
+* starting with version 0.0.9, the plugin includes a javascript-based markdown conversion component. As a result, the ~TiddlyWiki notebook must be saved and reloaded
+
+!! Usage
+
+* to fuse a complete stream, use the the button at the bottom of the tiddler, next to the `add node` button.
+** [img[$:/plugins/phiv/streams-fusion/button.png]]
+* to fuse a portion of a stream, use the context menu of the top-most node or the keyboard shortcuts when editing a node
+** [img[$:/plugins/phiv/streams-fusion/context-menu.png]]
+* Streams Fusion configuration settings can be viewed or changed at the bottom of the `Streams settings` configuration page, accessible through the Control Panel
+
+
+!! Technical details
+
+* The general case for Streams fusion is non-trivial; Streams nodes ''are'' full tiddlers and thus can include rich content (lists, tables, multi-line, headings, etc.). wikitext list items ''are not'', fundamentally. As a result, some node tiddler content cannot be retained, unchanged, during the conversion if one aims to preserve the hierarchy intact.
+* This plugin favours visual and hierarchical accuracy of the combined tiddler (except for the paragraphs list format), once rendered, over the accuracy of the wikitext from exported node tiddlers. This means that HTML artefacts are introduced when the node content would break down the lists or numbered lists, for example when nodes contain multi line text. In edit mode, these complex nodes will show `&lt;div&gt;` tags.  Jan's [[Streams-to-text addon|https://szen.io/stream/]] does a better job at preserving original wikitext, at the expense of the tree structure and the rendering of complex node tiddlers. It can be considered to &quot;flatten&quot; the tree.
+* Nodes that include locally-relevant macro code, or transclusions of local fields/tags will not fuse well, generally. The context of the tiddler changes after fusion, and wikitext code that relies on the context will likely not behave as expected. For example, the title of a node tiddler will change, once merged into a single tiddler (either into new name, or the name of the root tiddler). Stream nodes fields are not be preserved in the fusion.
+* The approach of using the [[space-space-newline plugin|https://wikilabs.github.io/editions/space-space-newline/]] and replacing newlines within node tiddlers with space-space-newlines within list items, instead of wrapping in `&lt;div&gt;` tags was explored, but results were unsatisfactory: for example, block rules such as headings work well in a node tiddler but were not processed when in a list item.
+
+
+!! Roadmap
+
+* extract the markdown conversion into a standalone plugin that can be used without Streams
+* investigate markdown conversion anomalies (e.g. `&lt;code&gt;`)
+
+!! Credits
+
+* Jeremy and the developer community for [[TiddlyWiki|https://tiddlywiki.com]]; for the enduring resolve to maintain this superb note-taking tool.
+* Saq Imtiaz for the revolutionary [[Streams|https://saqimtiaz.github.io/streams/]] plugin, taking [[TiddlyWiki|https://tiddlywiki.com]] to new heights, and his overall community involvement.
+* Jan's [[Streams-to-text addon|https://szen.io/stream/]] for the css styles and the inspiration how to approach the merging of Streams tiddlers. 
+* https://www.freepik.com/ for the streams-fusion icon. Jan's icon is still nicer, but he claimed it first.
+* The [[relink plugin|https://flibbles.github.io/tw5-relink/]] for a set of features we now can't live without.
+* The [[Tinka plugin packager|https://tinkaplugin.github.io]]; Streams-fusion was packaged without a node.js ~TiddlyWiki server.
+* The [[Turndown library|https://github.com/mixmark-io/turndown]] for markdown conversion, and the [[Typewriter plugin|https://saqimtiaz.github.io/sq-tw/typewriter.html]] to understand how to integrate it into ~TiddlyWiki.
 </pre>
 </div>
 <div tags="sqpl-plugin" title="streams plugin" type="text/x-markdown" revision="0" bag="default">
