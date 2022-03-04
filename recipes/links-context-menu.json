@@ -1,0 +1,5 @@
+{
+	"name": "Links Context Menu",
+	"repository": "https://github.com/saqimtiaz/tw5-links-context-menu.git",
+	"pluginPaths": ["plugins/links-context-menu"]
+}
