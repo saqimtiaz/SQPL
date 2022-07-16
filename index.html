@@ -10576,7 +10576,7 @@ See &lt;a href={{$:/plugins/flibbles/relink-titles!!source}} class=&quot;tc-tidd
 
 !! What is this?
 
-[[Streams-fusion|https://fastfreddy.gitlab.io/streams-fusion/]] is an addon to the [[Streams|https://saqimtiaz.github.io/streams/]] plugin that lets the user fuse (merge) and export a hierarchy of nodes from a stream, into a single tiddler's wikitext or raw html.
+[[Streams-fusion|https://fastfreddy.gitlab.io/streams-fusion/]] is an addon to the [[Streams|https://saqimtiaz.github.io/streams/]] plugin that lets the user fuse (merge) and export a hierarchy of nodes from a stream, into a single tiddler's wikitext, raw html or markdown.
 
 !! Why would I want to do this?
 
@@ -10594,6 +10594,7 @@ Once that process has taken place however, some users may wish to collapse the s
 * supports the following output formats:
 ** wikitext
 ** raw HTML output (this is an export format, all wikitext - e.g. macros, widgets - is rendered first)
+** markdown (this is an export format, all wikitext - e.g. macros, widgets - is rendered first)
 * supports sub-tree (branches) exports (using the node context menu or the keyboard shortcuts)
 * exports the root node's text if it exists
 * wraps complex nodes inside `&lt;div&gt;` tags, supporting complex streams such as [[Stream's FAQ|https://saqimtiaz.github.io/streams/#FAQs]] and [[Stream's working with streams tiddlers|https://saqimtiaz.github.io/streams/#Working%20with%20streams%20tiddlers]] well (see Technical details below)
@@ -10614,7 +10615,7 @@ First install the two prerequisite plugins (visit the page and follow the instal
 
 * install the [[streams-fusion|$:/plugins/phiv/streams-fusion]] plugin
 ** ''the recommended way to install streams-fusion is to add through the [[SQ plugin library|https://saqimtiaz.github.io/SQPL/]], using the [[Control Panel|$:/core/ui/ControlPanel/Plugins]]''
-* between version 0.0.9 and 0.0.13, the plugin includes a javascript-based markdown conversion component. From 0.0.14 onwards, however, that functionality was removed.
+* starting with version 0.0.9, the plugin includes a javascript-based markdown conversion component. As a result, the ~TiddlyWiki notebook must be saved and reloaded
 
 !! Usage
 
@@ -10632,14 +10633,11 @@ First install the two prerequisite plugins (visit the page and follow the instal
 * Nodes that include locally-relevant macro code, or transclusions of local fields/tags will not fuse well, generally. The context of the tiddler changes after fusion, and wikitext code that relies on the context will likely not behave as expected. For example, the title of a node tiddler will change, once merged into a single tiddler (either into new name, or the name of the root tiddler). Stream nodes fields are not be preserved in the fusion.
 * The approach of using the [[space-space-newline plugin|https://wikilabs.github.io/editions/space-space-newline/]] and replacing newlines within node tiddlers with space-space-newlines within list items, instead of wrapping in `&lt;div&gt;` tags was explored, but results were unsatisfactory: for example, block rules such as headings work well in a node tiddler but were not processed when in a list item.
 
-!! FAQ
-
-* ''What happened to the markdown output format?'' Starting with version 0.0.14, the feature was removed. Instead, we recommend you install cdaven's [[Markdown Export Plugin|https://cdaven.github.io/tiddlywiki/]]. Once that is installed, the best approach is to fuse the streams to wikitext into a new tiddler, then export the new tiddler to markdown. In the future, we hope to offer the conversion as a single step and offer options to copy to clipboard or to a new tiddler directly. These options went away with this new approach.
-
 
 !! Roadmap
 
-* leverage cdaven's [[Markdown Export Plugin|https://cdaven.github.io/tiddlywiki/]] for conversions internal to TiddlyWiki (without having to export)
+* extract the markdown conversion into a standalone plugin that can be used without Streams
+* investigate markdown conversion anomalies (e.g. `&lt;code&gt;`)
 
 !! Credits
 
