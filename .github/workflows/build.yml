@@ -1,3 +1,4 @@
+
 name: Build SQPL
 
 on:
@@ -11,7 +12,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     steps:
       - name: setup
         run: |
@@ -31,7 +32,6 @@ jobs:
       - name: Build
         run: |
             npm run build
-
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
