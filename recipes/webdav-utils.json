@@ -1,0 +1,5 @@
+{
+	"name": "WebDAV-Utils",
+	"repository": "https://github.com/saqimtiaz/tw5-plugins-sandbox.git",
+	"pluginPaths": ["plugins/sq/WebDAVUtils/plugin.info"]
+}
