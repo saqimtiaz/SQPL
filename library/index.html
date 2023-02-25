@@ -44,6 +44,21 @@ var assetList = [
         "icon": "data:image/svg+xml,%3Csvg%20version%3D%221.0%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20%20width%3D%2264.000000pt%22%20height%3D%2264.000000pt%22%20viewBox%3D%220%200%2064.000000%2064.000000%22%20%20preserveAspectRatio%3D%22xMidYMid%20meet%22%3E%20%20%3Cg%20transform%3D%22translate(0.000000%2C64.000000)%20scale(0.100000%2C-0.100000)%22%20fill%3D%22%23000000%22%20stroke%3D%22none%22%3E%20%3Cpath%20d%3D%22M116%20558%20c-20%20-28%20-20%20-48%200%20-76%2020%20-28%2068%20-29%2091%20-2%2027%2031%2038%2025%2067%20-35%2018%20-38%2037%20-62%2061%20-76%2019%20-12%2032%20-25%2029%20-30%20-3%20-5%20-59%20-9%20-124%20-9%20-110%200%20-119%201%20-125%2020%20-13%2041%20-81%2039%20-105%20-3%20-13%20-24%20-13%20-30%200%20-54%2024%20-42%2092%20-44%20105%20-3%206%2019%2015%2020%20125%2020%2065%200%20121%20-4%20125%20-10%203%20-5%20-8%20-16%20-25%20-25%20-32%20-16%20-43%20-43%20-12%20-29%209%204%2050%209%2090%2012%2069%204%2072%203%2072%20-18%200%20-16%204%20-20%2016%20-16%2024%209%20134%2088%20134%2096%200%208%20-131%20100%20-143%20100%20-4%200%20-7%20-9%20-7%20-20%200%20-18%20-6%20-20%20-62%20-19%20-35%200%20-71%204%20-81%208%20-10%204%20-33%2034%20-50%2066%20-18%2033%20-42%2064%20-54%2070%20-13%205%20-23%2013%20-23%2017%200%203%20-7%2014%20-16%2022%20-23%2024%20-70%2020%20-88%20-6z%20m65%20-8%20c38%20-21%2012%20-79%20-31%20-65%20-22%207%20-27%2044%20-8%2063%2015%2015%2015%2015%2039%202z%20m419%20-230%20c0%20-13%20-79%20-59%20-85%20-50%20-3%205%20-33%2010%20-66%2010%20l-59%200%200%2040%200%2040%2059%200%20c33%200%2063%205%2066%2010%206%209%2085%20-37%2085%20-50z%20m-519%2030%20c23%20-13%2025%20-43%203%20-61%20-31%20-26%20-70%2025%20-44%2056%2015%2018%2016%2018%2041%205z%22%2F%3E%20%3Cpath%20d%3D%22M280%20200%20c0%20-5%205%20-10%2010%20-10%206%200%2010%205%2010%2010%200%206%20-4%2010%20-10%2010%20-5%200%20-10%20-4%20-10%20-10z%22%2F%3E%20%3Cpath%20d%3D%22M116%20158%20c-20%20-28%20-20%20-48%200%20-76%2010%20-14%2026%20-22%2044%20-22%2028%200%2060%2022%2060%2041%200%205%206%209%2013%209%2016%200%2053%2038%2045%2046%20-4%203%20-15%200%20-27%20-8%20-18%20-11%20-23%20-10%20-41%2010%20-27%2029%20-74%2029%20-94%200z%20m65%20-8%20c38%20-21%2012%20-79%20-31%20-65%20-22%207%20-27%2044%20-8%2063%2015%2015%2015%2015%2039%202z%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E"
     },
     {
+        "title": "$:/plugins/sq/webdav-utils",
+        "name": "WebDAV Utilities for a wiki farm",
+        "description": "Saver, FileUploader & FileExplorer",
+        "author": "Saq Imtiaz",
+        "core-version": ">=5.2.5",
+        "plugin-priority": 0,
+        "list": "readme settings",
+        "version": "0.1.54",
+        "dependents": "$:/plugins/commons/file-uploads",
+        "plugin-type": "plugin",
+        "type": "application/json",
+        "readme": "@@color:red;''Experimental plugin - no support available. Use at your own risk.''@@\n\n* Improved ~WebDAV saver that creates backups\n** Recommend disabling ~AutoSave when backups are enabled\n* ~FileUploads plugin support for ~WebDAV\n** supports a path filter cascade to customize the upload path\n** See settings for ~FileUploads to determine which tiddlers are uploaded\n* A file explorer showing what files are present on the server $:/FileExplorer\n** affordances to retrieve the list of contents of folders on the server via the widget message `tm-webdav-ls`\n",
+        "requires-reload": "yes"
+    },
+    {
         "title": "$:/plugins/commons/file-uploads",
         "name": "File Uploads",
         "description": "Upload binary files to external storage",
