@@ -12,7 +12,9 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
+    container:
+            image: coatldev/six:latest
     steps:
       - name: setup
         run: |
@@ -24,12 +26,6 @@ jobs:
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '10'
-      - uses: MatteoH2O1999/setup-python@v1
-        with:
-          python-version: 2.7.6
-          allow-build: info
-          cache-build: true
-          cache: pip
       - run: |
             npm install --verbose --python=python2.7
       - name: Build
