@@ -24,9 +24,12 @@ jobs:
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '10'
-      - uses: actions/setup-python@v2
+      - uses: MatteoH2O1999/setup-python@v1
         with:
-            python-version: '2.7' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          python-version: 2.7.6
+          allow-build: info
+          cache-build: true
+          cache: pip
       - run: |
             npm install --verbose --python=python2.7
       - name: Build
