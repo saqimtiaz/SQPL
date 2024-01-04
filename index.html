@@ -165,6 +165,8 @@ Error message and password prompt
 
 <li>All plugins</li>
 
+<li>ExternalContent plugin</li>
+
 <li>file-uploads plugin</li>
 
 <li>fission-uploader plugin</li>
@@ -10436,6 +10438,53 @@ Error message and password prompt
 &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;
 &lt;/div&gt;
 &lt;/$list&gt;</pre>
+</div>
+<div tags="sqpl-plugin" title="ExternalContent plugin" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<pre>title: $:/plugins/sq/ExternalContent/readme
+
+!!Import content from other online wikis
+
+Note that content is loaded immediately after the wiki starts up, therefore JavaScript modules and tiddlers that are meant to influence the startup behaviour will not take effect if loaded in this manner. The wiki from which content is to be imported must be hosted on a server with CORS support, such as TiddlyHost or GitHub pages.
+
+!! Excluding imported content from being saved with the wiki
+''If you do not want the imported tiddlers to be saved with the host wiki, you must exclude them:''
+
+* for single file TiddlyWikis you need to create or amend the global variable publishFilter by adding `-[is_volatile[yes]]`
+** if you have not previously defined a publishFilter, create a tiddler with the title `$:/publishFilter` with the tag `$:/tags/Global` where the text field consists of `-[is_volatile[yes]]`
+* for TiddlyWiki on node.js, modify the tiddler `$:/config/SyncFilter` and append `-[is_volatile[yes]]`
+
+!! Loading content on startup
+
+For each wiki from which you want to load content on startup, create a tiddler tagged with `$:/tags/load-external-content` with the following fields:
+
+|tags |~$:/tags/load-external-content |
+|text |the URL of the wiki from which to import tiddlers |
+|content-filter |(optional) filter that determines which tiddlers to import from the target wiki. Note you can filter out system tiddlers or config tiddlers that might not be desirable. |
+|deserializer|(optional) defaults to `text/html` which is appropriate for TiddlyWiki files |
+
+Note: for TiddlyHost files the plugin automatically downloads just the tiddler.json file provided by TiddlyHost and chooses the appropriate deserializer, to decrease the bandwidth used.
+
+!! Loading content on demand
+
+Import variables from the tiddler `$:/plugins/sq/ExternalContent/loadWikiActions` and use the procedure `loadWikiActions` in an action string.
+
+Example:
+
+```
+\procedure loadMyWiki()
+\import [[$:/plugins/sq/ExternalContent/loadWikiActions]]
+&lt;$transclude
+    $variable=&quot;loadWikiActions&quot;
+    wikiURL=&quot;https://tiddlywiki.com&quot;
+    contentFilter=&quot;[!is[system]tag[Working with TiddlyWiki]]&quot;
+    deseralizer=&quot;text/html&quot;
+    /&gt;
+\end
+
+&lt;$button actions=&lt;&lt;loadMyWiki&gt;&gt; load content &lt;/button&gt;
+
+```
+</pre>
 </div>
 <div tags="sqpl-plugin" title="file-uploads plugin" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>title: $:/plugins/commons/file-uploads/readme
