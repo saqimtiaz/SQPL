@@ -7,7 +7,7 @@
         "core-version": ">=5.3.0",
         "plugin-priority": 0,
         "list": "readme settings",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "plugin-type": "plugin",
         "dependents": "",
         "type": "application/json",
