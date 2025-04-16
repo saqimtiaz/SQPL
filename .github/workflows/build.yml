@@ -12,22 +12,12 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
-    container:
-            image: coatldev/six:latest
+    runs-on: ubuntu-22.04
     steps:
-      - name: setup
-        run: |
-          sudo add-apt-repository -y ppa:ubuntu-toolchain-r/ppa
-          sudo apt-get update
-          sudo apt-get install libkrb5-dev -y
-          sudo apt-get install -y libstdc++6
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
         with:
-          node-version: '10'
-      - run: |
-            npm install --verbose --python=python2.7
+          node-version: '21'
       - name: Build
         run: |
             npm run build
